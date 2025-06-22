@@ -1,11 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>পরিচালক ও পরিচালনা</title>
+    <title>নির্দেশিকা সহায়ক</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tiro Bangla', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 1000px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            background: white;
+            /* নতুন পরিবর্তনগুলো এখানে */
+            table-layout: fixed;
+            word-wrap: break-word; /* অথবা overflow-wrap: break-word; */
+            border: 3px solid #e0e0e0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            /* নতুন পরিবর্তন */
+            width: 33.33%;
+        }
+
+        th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+        }
+
+        td {
+            padding: 20px 15px;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #e8ecf3;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        tr:hover td {
+            background: linear-gradient(135deg, #f8f9ff, #e8ecf3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        tr:nth-child(even) td {
+            background: #f8f9ff;
+        }
+
+        tr:nth-child(even):hover td {
+            background: linear-gradient(135deg, #e8ecf3, #f0f2f8);
+        }
+
+        .problem {
+            color: #e74c3c;
+            font-weight: 500;
+        }
+
+        .solution {
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .action {
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .table-container {
+                padding: 20px;
+            }
+            
+            th, td {
+                padding: 15px 10px;
+                font-size: 1rem;
+            }
+        }
+
+        .footer {
+            background: #f8f9ff;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #e8ecf3;
+        }
+    </style>
 </head>
 <body>
-    <h1>পরিচালক ও পরিচালনা</h1>
+    <div class="container">
+        <div class="header">
+            <h1>📋 পরিচালক ও পরিচালনা 📋</h1>
+            <p class="subtitle">প্রাতিষ্ঠানিক সমস্যা চিহ্নিতকরণ // অতঃপর সমাধান</p>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th><span class="icon">⚠️</span>সমস্যা</th>
+                        <th><span class="icon">💡</span>সমাধান</th>
+                        <th><span class="icon">✅</span>করণীয়</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="problem">মূল ভিত্তি বুঝতে না পারা</td>
+                        <td class="solution">ছাত্র, শিক্ষক ও এলাকাবাসী</td>
+                        <td class="action">মাসে অন্তত ১বার করে <br>সকলের মতামত গ্রহণ করা।</td>
+                    </tr> 
+                   
+                    <tr>
+                        <td class="problem">হ-য-ব-র-ল সিস্টেম</td>
+                        <td class="solution">কঠিন এবং সহজের মাঝামাঝি <br> নিয়ম তৈরি করা</td>
+                        <td class="action">শৃঙ্খলা মেনে চলার ক্ষেত্রে উৎসাহ প্রদান <br> এবং অমান্য করলে শাস্তি প্রদান</td>
+                    </tr>
+
+                    <tr>
+                        <td class="problem">কোষাধক্ষ্য না রাখা</td>
+                        <td class="solution">হিসাব নিকাশে দক্ষ, <br> এমন কাউকে দায়িত্ব দেওয়া</td>
+                        <td class="action">বাস্তবতার সাথে হিসাবের গড়মিল<br> হচ্ছে কিনা - সেদিকে লক্ষ্য রাখা</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p> পরিচালক ও পরিচালনা</p>
+        </div>
+    </div>
 </body>
 </html>
